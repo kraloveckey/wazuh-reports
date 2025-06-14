@@ -1,7 +1,5 @@
 # Wazuh Reports
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kraloveckey)
-
 ## Wazuh Agents Report
 
 These Python scripts automate the process of extracting agent data from the Wazuh API (light version, only save in csv file full information about agents: [`wazuh_agents_csv_report.py`](./wazuh_agents_csv_report.py)), filtering and reordering specific columns, and then uploading this data as a neatly formatted Google Sheet to your Google Drive ([`wazuh_agents_google_report.py`](./wazuh_agents_google_report.py)). It uses a Service Account for secure and hands-free authentication, making it ideal for scheduled tasks or server-side operations.
@@ -201,3 +199,9 @@ Also, you can do the same procedure for different emails to achieve custom email
 You can change these setting according to needs. Now save and restart the Wazuh Manager, and will get the mail alerts generated.
 
 ![Report](./.assets/custom.jpg)
+
+---
+
+<a href="https://www.paypal.com/donate/?hosted_button_id=GWWLEXEF3XL92">
+  <img src="https://raw.githubusercontent.com/kraloveckey/kraloveckey/refs/heads/main/.assets/paypal-donate-button.png" alt="Donate with PayPal" width="225" height="100"/>
+</a>
