@@ -95,7 +95,7 @@ try:
     print("\nFetching agents from Wazuh API...\n")
     response = requests.get(f'{WAZUH_PROTOCOL}://{WAZUH_HOST}:{WAZUH_PORT}/agents', headers=headers, verify=False)
     response.raise_for_status() # Checking for HTTP errors
-    
+
     data = response.json()
     agents = data['data']['affected_items']
 
@@ -173,11 +173,13 @@ try:
         f"mimeType='application/vnd.google-apps.spreadsheet' and "
         f"'root' in parents and trashed=false"
     )
-    
+
     file_list = drive_service.files().list(
         q=query,
         spaces='drive',
-        fields='files(id, name)'
+        fields='files(id, name)',
+        supportsAllDrives=True,
+        includeItemsFromAllDrives=True
     ).execute()
 
     existing_files = file_list.get('files', [])
@@ -187,13 +189,14 @@ try:
         file_id = existing_files[0]['id']
         drive_service.files().update(
             fileId=file_id,
-            media_body=media
+            media_body=media,
+            supportsAllDrives=True
         ).execute()
         spreadsheet_id = file_id
         print(f"\nGoogle Sheet '{GOOGLE_SHEET_NAME}' successfully updated to Google Drive (ID: {spreadsheet_id})...\n")
     else:
         # If the file does not exist, create a new one
-        file = drive_service.files().create(body=file_metadata, media_body=media, fields='id, name').execute()
+        file = drive_service.files().create(body=file_metadata, media_body=media, fields='id, name', supportsAllDrives=True).execute()
         spreadsheet_id = file['id']
         print(f"Google Sheet '{GOOGLE_SHEET_NAME}' successfully created on the Google Drive (ID: {spreadsheet_id}).")
 
@@ -243,3 +246,4 @@ finally:
     if os.path.exists(CSV_FILE_NAME):
         os.remove(CSV_FILE_NAME)
         print(f"Temporary file '{CSV_FILE_NAME}' deleted.")
+
