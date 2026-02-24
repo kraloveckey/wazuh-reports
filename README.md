@@ -199,9 +199,3 @@ Also, you can do the same procedure for different emails to achieve custom email
 You can change these setting according to needs. Now save and restart the Wazuh Manager, and will get the mail alerts generated.
 
 ![Report](./.assets/custom.jpg)
-
----
-
-<a href="https://www.paypal.com/donate/?hosted_button_id=GWWLEXEF3XL92">
-  <img src="https://raw.githubusercontent.com/kraloveckey/kraloveckey/refs/heads/main/.assets/paypal-donate-button.png" alt="Donate with PayPal" width="225" height="100"/>
-</a>
