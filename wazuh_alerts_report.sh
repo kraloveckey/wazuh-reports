@@ -368,7 +368,7 @@ source "$OSSEC_TMP_DIR/summary.env" 2>/dev/null || { CRIT=0; ERR=0; WARN=0; CBE=
 
 echo "<h3>📋 Wazuh Manager Log Health (<code>ossec.log</code>, last 24h)</h3>" >> "$REPORT_FILE"
 if [[ "$CBE" -gt 0 ]]; then
-    echo "<p>🔴 <b>Indexer Circuit Breaker / 429 errors:</b> $CBE (перевірте JVM Heap у <code>/etc/wazuh-indexer/jvm.options</code>!)</p>" >> "$REPORT_FILE"
+    echo "<p>🔴 <b>Indexer Circuit Breaker / 429 errors:</b> $CBE (check JVM Heap in <code>/etc/wazuh-indexer/jvm.options</code>!)</p>" >> "$REPORT_FILE"
 fi
 echo "<p><b>CRITICAL:</b> ${CRIT:-0} | <b>ERROR:</b> ${ERR:-0} | <b>WARNING:</b> ${WARN:-0}</p>" >> "$REPORT_FILE"
 
@@ -404,7 +404,7 @@ render_ossec_table() {
         }' >> "$REPORT_FILE"
         echo "</table>" >> "$REPORT_FILE"
         if [[ -n "$hint_cmd" ]]; then
-            echo "<p style='margin:6px 0 2px;font-size:12px;color:#555;'>Команда для повної перевірки на сервері:</p>" >> "$REPORT_FILE"
+            echo "<p style='margin:6px 0 2px;font-size:12px;color:#555;'>Run on server for full output:</p>" >> "$REPORT_FILE"
             echo "<pre style='background:#f4f4f4;padding:8px;border:1px solid #ddd;border-radius:4px;font-size:12px;white-space:pre-wrap;margin-top:2px;'><code>$hint_cmd</code></pre>" >> "$REPORT_FILE"
         fi
     fi
